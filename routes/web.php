@@ -13,3 +13,7 @@ Route::get('/data-cafe',function () {
 route::get('/hasil-spk', function(){
     return view('pages.hasil-spk', ['title' => 'Rangking Cafe']);
 });
+
+route::get('/login', function(){
+    return view('auth.login');
+})->name('login');
