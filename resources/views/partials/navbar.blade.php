@@ -6,8 +6,8 @@
 
             <div class="nav-menu">
                 <a href="/">Dashboard</a>
-                <a href="/cafe">Data Cafe</a>
-                <a href="/ranking">Ranking Cafe</a>
+                <a href="/data-cafe">Data Cafe</a>
+                <a href="/hasil-spk">Hasil Spk</a>
             </div>
         </div>
     </nav>
