@@ -2,35 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Bondowoso | Login</title>
+    <title>Login</title>
+
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+    {{-- ICON (pakai CDN) --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body class="login-page">
-    <div class="login-wrapper">
-        <div class="login-box">
-            <div class="login-logo">
-                <img src="{{ asset('images/logo-five.png') }}" alt="Logo FIVE">
-            </div>
 
-            <form class="login-form" method="POST" action="{{ route('login') }}">
-                @csrf
+<div class="login-box">
 
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-
-                <div class="login-options">
-                    <label class="remember-label">
-                        <input type="checkbox" name="remember">
-                        <span>Remember me</span>
-                    </label>
-
-                    <a href="#" class="forgot-link">Forgot password ?</a>
-                </div>
-
-                <button type="submit" class="login-btn">LOGIN</button>
-            </form>
-        </div>
+    <div class="login-logo">
+        <img src="{{ asset('images/logo-five.png') }}">
     </div>
+
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+
+        {{-- ERROR --}}
+        @if(session('error'))
+            <p style="color:red; margin-bottom:10px;">
+                {{ session('error') }}
+            </p>
+        @endif
+
+        <div class="input-group">
+            <i class="fa fa-user"></i>
+            <input type="text" name="username" placeholder="Username" required>
+        </div>
+
+        <div class="input-group">
+            <i class="fa fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+
+        <div class="login-options">
+            <label>
+                <input type="checkbox"> Remember me
+            </label>
+            <a href="#">Forgot password ?</a>
+        </div>
+
+        <button class="login-btn">LOGIN</button>
+    </form>
+
+</div>
+
 </body>
 </html>
