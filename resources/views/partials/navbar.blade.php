@@ -5,9 +5,9 @@
             </div>
 
             <div class="nav-menu">
-                <a href="/">Dashboard</a>
-                <a href="/data-cafe">Data Cafe</a>
-                <a href="/hasil-spk">Hasil Spk</a>
+                <a href="{{ route('landing.index') }}">Dashboard</a>
+                <a href="{{ route('cafe.index') }}">Data Cafe</a>
+                <a href="{{ route('spk.index') }}">Hasil Spk</a>
             </div>
         </div>
     </nav>
