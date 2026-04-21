@@ -1,26 +1,13 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthLoginControll;
+use App\Http\Controllers\LandingPageController;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.landing', ['title' => 'Dashboard']);
+Route::middleware('guest')->group(function() {
+    Route::get('/', [LandingPageController::class, 'index'])->name('landing.index');
+    Route::get('/data-cafe', [LandingPageController::class, 'datacafe'])->name('cafe.index');
+    Route::get('/hasil-spk', [LandingPageController::class, 'hasilspk'])->name('spk.index');
+    Route::get('/login-admin-spk', [AuthLoginControll::class, 'index'])->name('login');
 });
-Route::get('/data-cafe',function () {
-    return view('pages.data-cafe', ['title' => 'Data Cafe']);
-});
-route::get('/hasil-spk', function(){
-    return view('pages.hasil-spk', ['title' => 'Rangking Cafe']);
-});
-route::get('/login', function(){
-    return view('auth.login');
-})->name('login');
-Route::post('/login', function (Request $request) {
-    $username = $request->username;
-    $password = $request->password;
-
-    // LOGIN SEMENTARA (hardcode)
-    if ($username == 'admin' && $password == 'admin') {
-        return redirect('/');
-    }
-    return back()->with('error', 'Username / Password salah');
-})->name('login');
