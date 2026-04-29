@@ -11,3 +11,13 @@ Route::middleware('guest')->group(function() {
     Route::get('/hasil-spk', [LandingPageController::class, 'hasilspk'])->name('spk.index');
     Route::get('/login-admin-spk', [AuthLoginControll::class, 'index'])->name('login');
 });
+
+Route::prefix('admin')->name('admin.')->group(function() {
+    Route::get('cafe', function() {
+        return view('admin.cafe.index');
+    })->name('cafe.index');
+    
+    Route::get('data-admin', function() {
+        return view('admin.data-admin');
+    })->name('data_admin');
+});
